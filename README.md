@@ -1,6 +1,6 @@
-# Webapp
+# angular-quilljs-s3-image-upload-spike
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.2.0.
+Spike solution around using AWS S3 image uploading with Angular and QuillJS. This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.2.0.
 
 ## Development server
 
