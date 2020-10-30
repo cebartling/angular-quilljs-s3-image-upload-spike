@@ -1,8 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import Quill from 'quill';
-import {ImageHandler, Options} from 'ngx-quill-upload';
-
-Quill.register('modules/imageHandler', ImageHandler);
+import {Options} from 'ngx-quill-upload';
 
 @Component({
   selector: 'app-editor-view',
@@ -15,10 +12,28 @@ export class EditorViewComponent implements OnInit {
 
   modules = {
     toolbar: [
-      ['image']
+      ['bold', 'italic', 'underline', 'strike'],        // toggled buttons
+      ['blockquote', 'code-block'],
+
+      [{header: 1}, {header: 2}],                       // custom button values
+      [{list: 'ordered'}, {list: 'bullet'}],
+      [{script: 'sub'}, {script: 'super'}],             // superscript/subscript
+      [{indent: '-1'}, {indent: '+1'}],                 // outdent/indent
+      [{direction: 'rtl'}],                             // text direction
+
+      [{size: ['small', false, 'large', 'huge']}],      // custom dropdown
+      [{header: [1, 2, 3, 4, 5, 6, false]}],
+
+      [{color: []}, {background: []}],                  // dropdown with defaults from theme
+      [{font: []}],
+      [{align: []}],
+
+      ['clean'],                                         // remove formatting button
+      ['image']                                          // link and image, video
     ],
     imageHandler: {
-      upload: (file): Promise<string> => {
+      upload: (file: File): Promise<string> => {
+        console.log('Upload handler invoked', file);
         // return your uploaded image URL as Promise<string>
         return new Promise((resolve, reject) => {
           // if (file.type === 'image/jpeg' || file.type === 'image/png' || file.type === 'image/jpg') { // File types supported for image
